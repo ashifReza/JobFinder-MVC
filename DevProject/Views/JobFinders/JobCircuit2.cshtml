@@ -1,0 +1,269 @@
+﻿
+@model IEnumerable<DevProject.Models.JobPoster>
+
+@{
+    ViewBag.Title = "JobCircuit2";
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Scholarship Solution</title>
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/vendors_admin/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/vendors_admin/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/vendors_admin/images/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    @Styles.Render("~/Content2/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content2/vendor/bootstrap-icons/bootstrap-icons.css")
+    @Styles.Render("~/Content2/cssassets/vendor/aos/aos.css")
+    @Styles.Render("~/Content2/vendor/remixicon/remixicon.css")
+    @Styles.Render("~/Content2/vendor/swiper/swiper-bundle.min.css")
+    @Styles.Render("~/Content2/vendor/glightbox/css/glightbox.min.css")
+    @Styles.Render("~/Content2/css/style.css")
+    @Styles.Render("~/Content2/css/profprofile.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="#hero" class="logo d-flex align-items-center">
+                <img src="~/Content/img/logo.png" alt="">
+                <span style="color:chartreuse;">Job Finders</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="https://localhost:44327/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="~/Universities/ShowAll">Find Jobs</a></li>
+                    <li><a class="nav-link scrollto" href="~/Students/Index">Post Jobs</a></li>
+                    <li><a class="nav-link scrollto" href="~/Home/Index/#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="~/Home/Index/#team">About Us</a></li>
+                    <li><a class="nav-link scrollto " style="margin-left:35px; " href="~/Professors/Profile/">My Profile</a></li>
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header>
+
+    <!-- Header -->
+    <main>
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+                <header class="section-header">
+                    <h2>Jobs</h2>
+                    <p>Check out the latest Jobs</p>
+                </header>
+                <!-- Page content -->
+
+                <div>
+                    @using (Html.BeginForm("JobCircuit", "JobPosters", FormMethod.Get))
+                    {
+                        //@Html.TextBox("searching")<input type="submit" value="Search" />
+                        @Html.TextBox("search", null, new { id = "choices-text-preset-values", @class = "form-control", @type = "text", @placeholder = "Type to search..." })<input type="submit" value="search" />
+                    }
+                </div>
+                <br><br><br>
+                @if (Model.Count() == 0)
+                {
+                    <p style="color:red"> No Match Found!</p>
+                }
+                else
+                {
+
+                    <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                        @foreach (var item in Model)
+                        {
+                        <div class="col-lg-4 col-md-6 portfolio-item">
+                            @*<div class="portfolio-wrap">*@
+
+                            <h2 style="text-align:center">@Html.DisplayFor(modelItem => item.JobName) </h2>
+                            <h3>Posted By</h3>
+                            <p>@Html.DisplayFor(modelItem => item.UserName)</p>
+                            <h3>Job Details</h3>
+                            <p>@Html.DisplayFor(modelItem => item.Skills)</p>
+                            <p> @Html.DisplayFor(modelItem => item.Salary)</p>
+                            <p>  @Html.DisplayFor(modelItem => item.JobDesc)</p>
+                            <p>  @Html.DisplayFor(modelItem => item.Gender)</p>
+                            <p>  @Html.DisplayFor(modelItem => item.Age)</p>
+                            <p> @Html.DisplayFor(modelItem => item.Email)</p>
+                            <div class="form-row-last">
+                                <a class="btn btn-default" href="~/Applies/Create">Finish Applying</a>
+                            </div>
+
+                            @*<div class="portfolio-info">*@
+
+                            @*<button class="btn btn--radius-2 btn--blue" onclick="~/Applies/Create" >Finish Applying</button>*@
+                            @*<a class="nav-link scrollto" href="~/JobFinders/Create">You need to be logged in to apply</a>*@
+                            @*</div>*@
+                            @*</div>*@
+                        </div>
+                        }
+                    </div>
+                }
+
+
+        </section>
+    </main>
+
+
+    <!-- Vendor JS Files -->
+    @Scripts.Render("~/assets2/vendor/bootstrap/js/bootstrap.bundle.js")
+    @Scripts.Render("~/assets2/vendor/aos/aos.js")
+    @Scripts.Render("~/assets2/vendor/php-email-form/validate.js")
+    @Scripts.Render("~/assets2/vendor/swiper/swiper-bundle.min.js")
+    @Scripts.Render("~/assets2/vendor/purecounter/purecounter.js")
+    @Scripts.Render("~/assets2/vendor/isotope-layout/isotope.pkgd.min.js")
+    @Scripts.Render("~/assets2/vendor/glightbox/js/glightbox.min.js")
+
+
+    <!-- Template Main JS File -->
+    @Scripts.Render("~/assets2/js/main.js")
+    @*@RenderSection("scripts", required: false)*@
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model IEnumerable<DevProject.Models.JobPoster>
+
+    @{
+        ViewBag.Title = "JobCircuit2";
+    }
+
+    <h2>JobCircuit2</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserPass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Skills)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConNumber)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.JobPostID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.JobPostID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.JobPostID })
+            </td>
+        </tr>
+    }
+
+    </table>*@

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Humm";
+    Layout = null;
+}
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    //const el = documen.createElement('div')
+    //el.innerHTML = "He"
+    ////setTimeout(function () { alert("Hello"); }, 3000);
+    //swal("Good job!", "You clicked the button!", "success");
+    const el = document.createElement('div')
+    el.innerHTML = "You have Finished Applying.Go back to <a href='https://localhost:44327/JobFinders/JobCircuit2'>Circuit Page to continue looking</a>"
+
+   
+
+</script>
+
+<div>
+    <script>
+        swal({
+            title: "Great Job!",
+            content: el,
+            buttons: false,
+        })
+    </script>
+   
+
+</div>
+ 

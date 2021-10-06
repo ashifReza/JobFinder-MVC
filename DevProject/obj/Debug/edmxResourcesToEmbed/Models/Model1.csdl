@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DevProjectDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adminn">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Apply">
+    <Key>
+      <PropertyRef Name="ApplyID" />
+    </Key>
+    <Property Name="ApplyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="JobFindID" Type="Int32" Nullable="false" />
+    <Property Name="JobPostID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="JobFinder" Relationship="Self.FK__Apply__JobFindID__108B795B" FromRole="Apply" ToRole="JobFinder" />
+    <NavigationProperty Name="JobPoster" Relationship="Self.FK__Apply__JobPostID__117F9D94" FromRole="Apply" ToRole="JobPoster" />
+  </EntityType>
+  <EntityType Name="JobFinder">
+    <Key>
+      <PropertyRef Name="JobFindID" />
+    </Key>
+    <Property Name="JobFindID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ConNumber" Type="Int64" Nullable="false" />
+    <Property Name="College" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Experience" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Resume" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Applies" Relationship="Self.FK__Apply__JobFindID__108B795B" FromRole="JobFinder" ToRole="Apply" />
+  </EntityType>
+  <EntityType Name="JobPoster">
+    <Key>
+      <PropertyRef Name="JobPostID" />
+    </Key>
+    <Property Name="JobPostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JobName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JobDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="WorkDays" Type="Int16" Nullable="false" />
+    <Property Name="Salary" Type="Int64" Nullable="false" />
+    <Property Name="Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Age" Type="Int16" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConNumber" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Applies" Relationship="Self.FK__Apply__JobPostID__117F9D94" FromRole="JobPoster" ToRole="Apply" />
+  </EntityType>
+  <EntityType Name="Support">
+    <Key>
+      <PropertyRef Name="SupportID" />
+    </Key>
+    <Property Name="SupportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Apply__JobFindID__108B795B">
+    <End Role="JobFinder" Type="Self.JobFinder" Multiplicity="1" />
+    <End Role="Apply" Type="Self.Apply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobFinder">
+        <PropertyRef Name="JobFindID" />
+      </Principal>
+      <Dependent Role="Apply">
+        <PropertyRef Name="JobFindID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Apply__JobPostID__117F9D94">
+    <End Role="JobPoster" Type="Self.JobPoster" Multiplicity="1" />
+    <End Role="Apply" Type="Self.Apply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobPoster">
+        <PropertyRef Name="JobPostID" />
+      </Principal>
+      <Dependent Role="Apply">
+        <PropertyRef Name="JobPostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DevProjectDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adminns" EntityType="Self.Adminn" />
+    <EntitySet Name="Applies" EntityType="Self.Apply" />
+    <EntitySet Name="JobFinders" EntityType="Self.JobFinder" />
+    <EntitySet Name="JobPosters" EntityType="Self.JobPoster" />
+    <EntitySet Name="Supports" EntityType="Self.Support" />
+    <AssociationSet Name="FK__Apply__JobFindID__108B795B" Association="Self.FK__Apply__JobFindID__108B795B">
+      <End Role="JobFinder" EntitySet="JobFinders" />
+      <End Role="Apply" EntitySet="Applies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Apply__JobPostID__117F9D94" Association="Self.FK__Apply__JobPostID__117F9D94">
+      <End Role="JobPoster" EntitySet="JobPosters" />
+      <End Role="Apply" EntitySet="Applies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

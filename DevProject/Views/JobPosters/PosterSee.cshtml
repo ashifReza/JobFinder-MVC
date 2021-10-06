@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DevProject.Models.Apply>
+
+@{
+    ViewBag.Title = "PosterSee";
+}
+
+<h2>People who Have Applied For Jobs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobFinder.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobPoster.JobName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobFinder.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobPoster.JobName)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ApplyID }) |*@
+
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.ApplyID })*@
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Check Out Finder Profiles", "DashBoard2", "JobFinders") |

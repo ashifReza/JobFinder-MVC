@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DevProject.Models.PosterApplyJoin>
+@{
+    ViewBag.Title = "ShowApplied";
+}
+
+
+<center>
+    <h2>ShowApplied</h2>
+    <hr/>
+    <table class="table">
+        <tr>
+            <td>Job Posters Name</td>
+            <td>Job Appliers Name</td>
+        </tr>
+        @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.JobPosterName</td>
+                    <td>@item.AppliedName</td>
+
+                </tr>
+            }
+    </table>
+
+</center>

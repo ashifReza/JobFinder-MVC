@@ -1,0 +1,147 @@
+﻿@model ScholarshipSolution.Models.Professor
+
+@{
+    ViewBag.Title = "DashBoard";
+}
+<html>
+<head>
+
+    @Styles.Render("~/Content/css/montserrat-font.css")
+    @Styles.Render("~/Content/css/material-design-iconic-font.min.css")
+    <!-- Main Style Css -->
+    @Styles.Render("~/Content/css/style2.css")
+    @Styles.Render("~/Content/css/style.css")
+
+
+</head>
+<body>
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="#hero" class="logo d-flex align-items-center">
+                <img src="~/Content/img/logo.png" alt="">
+                <span style="color:#ff758f;">Scholarship Solution</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="https://localhost:44305/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#">University</a></li>
+                    <li><a class="nav-link scrollto" href="#">Scholarship</a></li>
+                    <li><a class="nav-link scrollto" href="#">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#">About Us</a></li>
+                    <li><a class="nav-link scrollto " style="margin-left:35px; " href="#">Log in</a></li>
+                    @*<li class="getstarted scrollto">@Html.ActionLink("Sign Up", "Create", "Students")</li>*@
+                    <li><a class="getstarted scrollto" href="~/Students/Create/">Sign Up</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header>
+    <h2>DashBoard</h2>
+
+    <div>
+        <h4>Professor</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EducationalBackground)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EducationalBackground)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NoOfStudents)
+            </dt>
+
+            @*<dd>
+                    @Html.DisplayFor(model => model.NoOfStudents)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Funding)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Funding)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Picture)
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Department)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Department)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Expertise.TopicName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Expertise.TopicName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Interest.TopicName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Interest.TopicName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.University.UniName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.University.UniName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProfID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>
+</html>

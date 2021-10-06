@@ -1,0 +1,42 @@
+﻿@model DevProject.Models.Apply
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Apply</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobFinder.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobFinder.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobPoster.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobPoster.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ApplyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
